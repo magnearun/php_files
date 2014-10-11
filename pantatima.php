@@ -10,7 +10,6 @@ $host="sql5.freemysqlhosting.net"; //replace with database hostname
 $username="sql554616"; //replace with database username 
 $password="tS6%eH6%"; //replace with database password 
 $db_name="sql554616"; //replace with database name
-
  
 $con=mysql_connect("$host", "$username", "$password"); 
 mysql_select_db("$db_name");
@@ -23,8 +22,13 @@ $response = array();
 if (isset($_POST['kt'])) {
  
     $kt = $_POST['kt'];
-    $starfsmadur = 'bambi';
-    $tegund ="F";
+    $staff_id = $_POST['starfsmadur'];
+    $adgerd ="Herraklipping";
+   
+    $nafn = "Magnea";
+    $simi = 8458019;
+   
+    $email = "mrv2@hi.is";
     $dagsetning = "2012.12.12";
     $startDate= "2014-10-12 12:00:00";
     $endDate = "2014-10-12 13:00:00";
@@ -33,7 +37,7 @@ if (isset($_POST['kt'])) {
 
  
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO pantanir(kennitala, starfsmadur, tegund, startTime, endTime, dagsetning, startDate, endDate) VALUES('$kt', '$starfsmadur', '$tegund', '$startTime', '$endTime', '$dagsetning', '$startDate', '$endDate')");
+    $result = mysql_query("INSERT INTO Pantanir(startDate, endDate, staff_id, adgerd, nafn, simi, kt, email) VALUES('$startDate', '$endDate', '$staff_id', '$adgerd', '$nafn', $simi, '$kt', '$email')");
  
     // check if row inserted or not
     if ($result) {

@@ -1,12 +1,12 @@
 <?php
 $host="sql5.freemysqlhosting.net"; //replace with database hostname 
-$username="sql554585"; //replace with database username 
-$password="wI1*pB4!"; //replace with database password 
-$db_name="sql554585"; //replace with database name
- 
+$username="sql554616"; //replace with database username 
+$password="tS6%eH6%"; //replace with database password 
+$db_name="sql554616"; //replace with database name
+
 $con=mysql_connect("$host", "$username", "$password"); 
 mysql_select_db("$db_name");
-$sql = "select * from pantanir"; 
+$sql = "select * from Pantanir"; 
 $result = mysql_query($sql);
 $json = array();
  
