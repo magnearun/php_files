@@ -22,7 +22,7 @@ $response = array();
 if (isset($_POST['kt'])) {
  
     $kt = $_POST['kt'];
-    $staff_id = $_POST['starfsmadur'];
+    $staff_id = $_POST['staff_id'];
     $adgerd ="Herraklipping";
    
     $nafn = "Magnea";
