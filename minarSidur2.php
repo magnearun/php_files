@@ -2,8 +2,7 @@
 <?php
  
 /*
- * Following code will create a new product row
- * All product details are read from HTTP Post Request
+ * Sæki upplýsingar um allar pantanir notanda
  */
 
 $host="sql5.freemysqlhosting.net"; //replace with database hostname 
@@ -15,65 +14,59 @@ $con=mysql_connect("$host", "$username", "$password");
 mysql_select_db("$db_name");
 
 
-// array for JSON response
-
+// JSON fylki fyrir niðurstöður
  $response = array();
 
-   
- 
-    // check for post data
+
+// athuga hvort að nauðsynlegar upplýsingar séu til staðar
 if (isset($_GET['kt'])) {
     $kt= $_GET['kt'];
  
-    // get a product from products table
+    // MySQL skipun - Sæki allar pantanir á ákveðinni kennitölu
     $result = mysql_query("SELECT *FROM Pantanir WHERE kt = $kt");
+
     $pantanir = array();
+    // athuga hvort skipunin skilaði niðurstöðum
     if (!empty($result)) {
-        // check for empty result
         if (mysql_num_rows($result) > 0) {
-            
             if(mysql_num_rows($result)){
                 while($row=mysql_fetch_assoc($result)){
                     $pantanir[]=$row;
                 }
 
             }
-          
- 
-         
-           
-            // success
+        
+            // skipunin skilaði niðurstöðum
             $response["success"] = 1;
- 
-            // user node
+
             $response["pantanir"] = array();
  
-           array_push($response["pantanir"], $pantanir);
+            array_push($response["pantanir"], $pantanir);
  
-            // echoing JSON response
+            // Skila JSON fylki
             echo json_encode($response);
         } else {
-            // no product found
+            // engin röð fannst
             $response["success"] = 0;
-            $response["message"] = "No product found";
+            $response["message"] = "Engar pantanir fundust";
  
-            // echo no users JSON
+            // skila JSON fylki
             echo json_encode($response);
         }
     } else {
-        // no product found
+        // engin röð fannst
         $response["success"] = 0;
-        $response["message"] = "No product found";
+        $response["message"] = "Engar pantanir fundust";
  
-        // echo no users JSON
+        // skila JSON fylki
         echo json_encode($response);
     }
 } else {
-    // required field is missing
+    // nauðsynlegr upplýsingar vantar
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+    $response["message"] = "nauðsynlegr upplýsingar vantar";
  
-    // echoing JSON response
+    // skila JSON fylki
     echo json_encode($response);
 }
 ?>
