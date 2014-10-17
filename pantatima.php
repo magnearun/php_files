@@ -6,19 +6,19 @@
  * 
  */
 
-$host="sql5.freemysqlhosting.net"; //replace with database hostname 
-$username="sql554616"; //replace with database username 
-$password="tS6%eH6%"; //replace with database password 
-$db_name="sql554616"; //replace with database name
+$host="sql5.freemysqlhosting.net"; //database hostname 
+$username="sql554616"; //database username 
+$password="tS6%eH6%"; //database password 
+$db_name="sql554616"; //database name
  
 $con=mysql_connect("$host", "$username", "$password"); 
 mysql_select_db("$db_name");
 
 
-// array for JSON response
+// JSON fylki fyrir niðurstöður
 $response = array();
  
-// check for required fields
+// athuga hvort nauðslynlegar upplýsingar séu til staðar
 if (isset($_POST['staff_id'])) {
 
     $staff_id = $_POST['staff_id'];
@@ -35,31 +35,31 @@ if (isset($_POST['staff_id'])) {
     $dagur = $_POST['dagur'];
     $lengd = $_POST['lengd'];  
    
-    // MySQL query
+    // MySQL query - Bæti við röð í töflunni Pantanir
     $result = mysql_query("INSERT INTO Pantanir(startDate, endDate, staff_id, adgerd, nafn, simi, email, harlengd, time, dagur, lengd) VALUES('$startDate', '$endDate', '$staff_id', '$adgerd', '$nafn', $simi, '$email', '$harlengd', '$time', '$dagur', '$lengd' )");
  
-    // check if row inserted or not
+    // Athuga hvort það tókst að bæta við röð
     if ($result) {
-        // successfully inserted into database
+        // innsetning í töflu heppnaðist
         $response["success"] = 1;
         $response["message"] = "Nýrri röð hefur verið bætt við.";
  
-        // echoing JSON response
+        // skila JSON fylki
         echo json_encode($response);
     } else {
-        // failed to insert row
+        // innsetning í töflu misheppnaðist
         $response["success"] = 0;
         $response["message"] = "Oops! Villa!.";
  
-        // echoing JSON response
+        // skila JSON fylki
         echo json_encode($response);
     }
 } else {
-    // required field is missing
+    // Nauðsynlegar upplýsingar vantar
     $response["success"] = 0;
     $response["message"] = "Required field(s) is missing";
  
-    // echoing JSON response
+    // skila JSON fylki
     echo json_encode($response);
 }
 ?>
