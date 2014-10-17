@@ -4,8 +4,8 @@ header('Content-type=application/json; charset=utf-8');
  * Upplýsingar um gagnagrunn
  */
 
-define('DB_USER', "sql554616");
-define('DB_PASSWORD', "tS6%eH6%"); 
-define('DB_DATABASE', "sql554616");
-define('DB_HOST', "sql5.freemysqlhosting.net");
+define('DB_USER', "folkmedhar");
+define('DB_PASSWORD', "peoplewithhair"); 
+define('DB_DATABASE', "folk");
+define('DB_HOST', "db4free.net");
 ?>
