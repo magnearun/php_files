@@ -5,10 +5,10 @@
  * Sæki upplýsingar um allar pantanir notanda
  */
 
-$host="sql5.freemysqlhosting.net"; //replace with database hostname 
-$username="sql554616"; //replace with database username 
-$password="tS6%eH6%"; //replace with database password 
-$db_name="sql554616"; //replace with database name
+$host="sql5.freemysqlhosting.net"; //database hostname 
+$username="sql554616"; //database username 
+$password="tS6%eH6%"; //database password 
+$db_name="sql554616"; //database name
  
 $con=mysql_connect("$host", "$username", "$password"); 
 mysql_select_db("$db_name");
