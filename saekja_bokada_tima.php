@@ -6,10 +6,11 @@
  * 
  */
 
-$host="sql5.freemysqlhosting.net"; //Database hostname 
-$username="sql554616"; //Database username 
-$password="tS6%eH6%"; //Database password 
-$db_name="sql554616"; //Database name
+$host="db4free.net"; //database hostname 
+$username="folkmedhar"; //database username 
+$password="peoplewithhair"; //database password 
+$db_name="folk"; //database name
+ 
  
 // tengjast gagnagrunni
 $con=mysql_connect("$host", "$username", "$password"); 
@@ -25,10 +26,16 @@ if (isset($_GET['dagur'])) {
      $dagur= $_GET['dagur'];
      $staff_id= $_GET['staff_id'];
 
-    
+       mysql_query("SET character_set_results=utf8", $con);
     // MySql query - sæki upphafstíma og lengd bókaðra tíma fyrir ákveðin dag
+     if ($staff_id != '000') {
 
-    $result = mysql_query("SELECT time, lengd FROM Pantanir WHERE dagur = '$dagur' AND staff_id = '$staff_id'");
+        $result = mysql_query("SELECT time, lengd, staff_id FROM Pantanir WHERE dagur = '$dagur' AND staff_id = '$staff_id'");
+     }
+     else{
+        $result = mysql_query("SELECT time, lengd, staff_id FROM Pantanir WHERE dagur = '$dagur'");
+     }
+    
     $pantanir = array();
 
     // athuga hvort að skipunin skilaði niðurstöðum

@@ -6,10 +6,13 @@
  * 
  */
 
-$host="sql5.freemysqlhosting.net"; //database hostname 
-$username="sql554616"; //database username 
-$password="tS6%eH6%"; //database password 
-$db_name="sql554616"; //database name
+
+$host="db4free.net"; //database hostname 
+$username="folkmedhar"; //database username 
+$password="peoplewithhair"; //database password 
+$db_name="folk"; //database name
+
+
  
 $con=mysql_connect("$host", "$username", "$password"); 
 mysql_select_db("$db_name");
